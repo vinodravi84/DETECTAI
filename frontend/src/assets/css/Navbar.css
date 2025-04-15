@@ -1,0 +1,123 @@
+/* Container for the entire navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 40px;
+  margin: 20px auto 0 auto;
+  width: calc(100% - 80px);
+  max-width: 1200px;
+  background: rgba(31, 31, 41, 0.9); /* Slight transparency */
+  border-radius: 20px; /* Sleek rounded corners */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(12px); /* Glassy blur effect */
+  border: 1px solid rgba(255, 255, 255, 0.05); /* Subtle border */
+  z-index: 1000;
+  margin-top: -5px;
+}
+
+/* Left part: logo container */
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-icon {
+  font-size: 1.8rem;
+  margin-right: 10px;
+  color: #8b5cf6;
+  text-shadow: 0 0 6px rgba(139, 92, 246, 0.7);
+}
+
+.logo-text {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #f9fafb;
+  text-shadow: 0 0 10px rgba(139, 92, 246, 0.6);
+}
+
+/* Right part: navigation links */
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+/* Navigation items list */
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 28px;
+  margin: 0;
+  padding: 0;
+}
+
+/* Individual nav item */
+.navbar-links li {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* Nav link styling with subtle circle */
+/* Nav link styling with a more vibrant gradient */
+/* Nav link styling with a more vibrant gradient */
+.navbar-links a {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.05); /* Light visible border */
+  color: #f9fafb;
+  text-decoration: none;
+  background-color: rgba(255, 255, 255, 0.02); /* Very faint circle effect */
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.navbar-links a:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+  transform: scale(1.08);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Launch App button styling */
+/* Launch App button styling */
+.launch-button {
+  background: linear-gradient(to right, #8b5cf6, #6d28d9); /* Neon gradient */
+  padding: 10px 22px;
+  border-radius: 9999px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  box-shadow: 0 0 12px #8b5cf6, 0 0 25px #6d28d9; /* Glow effect */
+  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+  border: 2px solid #6d28d9; /* Border with neon color */
+  text-shadow: 0 0 10px rgba(139, 92, 246, 0.8), 0 0 15px rgba(139, 92, 246, 0.9); /* Neon text glow */
+}
+
+/* Hover effect to intensify the neon glow */
+.launch-button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(to right, #6d28d9, #8b5cf6); /* Inverted gradient on hover */
+  box-shadow: 0 0 20px #8b5cf6, 0 0 40px #6d28d9; /* Brighter glow */
+  border: 2px solid #8b5cf6; /* Bright border on hover */
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-icon {
+  width: 40px;    /* Adjust width as needed */
+  height: auto;   /* Maintain aspect ratio */
+  margin-right: 10px;
+  object-fit: contain;
+}
+
+

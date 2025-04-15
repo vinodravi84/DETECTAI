@@ -1,0 +1,87 @@
+/* About Page Styling */
+.about-container {
+    max-width: 1200px;
+    margin: 60px auto 0 auto; /* Increased top margin to avoid sticking to navbar */
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(168, 85, 247, 0.15); /* Reduced purple glow intensity */
+    height: calc(100vh - 120px); /* Ensure the container fits within the screen */
+    overflow-y: auto; /* Allow scroll if necessary */
+  }
+  
+  .about-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .about-title {
+    font-size: 2.2rem; /* Slightly smaller title */
+    font-weight: 700;
+    color: #af8ee8; /* Slightly toned-down purple */
+    text-shadow: 0 0 6px #7c3aed, 0 0 12px #7c3aed; /* Less intense neon glow */
+    margin-bottom: 10px;
+  }
+  
+  .about-icon {
+    margin-right: 10px;
+    color: #7c3aed;
+    font-size: 2.2rem; /* Slightly smaller icon */
+  }
+  
+  .about-subtitle {
+    font-size: 1.1rem;
+    color: #c4b5fd;
+  }
+  
+  .about-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the content */
+    margin-top: 20px;
+  }
+  
+  .about-text {
+    width: 100%;
+    max-width: 50%; /* Adjusted for better alignment with gif */
+    padding-right: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .about-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #e5e7eb;
+    margin-bottom: 20px;
+  }
+  
+  .about-image {
+    width: 100%;
+    max-width: 25%; /* Reduced gif size more */
+    padding-left: 20px;
+  }
+  
+  .about-img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(168, 85, 247, 0.2);
+  }
+  
+  .about-footer {
+    text-align: center;
+    margin-top: 40px;
+  }
+  
+  .footer-text {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #e5e7eb;
+    text-shadow: 0 0 5px #7e3fe3; /* Reduced purple glow for footer */
+  }
+  
+  .about-lottie {
+    max-width: 250px; /* Reduced gif size more */
+    width: 100%;
+    margin: 0 auto;
+  }
+  

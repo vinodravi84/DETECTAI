@@ -1,0 +1,24 @@
+pipeline {
+    agent any
+    environment {
+        DOCKER_IMAGE_BACKEND = "image-recognition-backend"
+        DOCKER_IMAGE_FRONTEND = "image-recognition-frontend"
+    }
+    stages {
+        stage('Clone Repository') {
+            steps {
+                git 'https://github.com/your-repo/image-recognition-app.git'
+            }
+        }
+        stage('Build Docker Images') {
+            steps {
+                sh 'sh jenkins/scripts/build.sh'
+            }
+        }
+        stage('Deploy Containers') {
+            steps {
+                sh 'sh jenkins/scripts/deploy.sh'
+            }
+        }
+    }
+}

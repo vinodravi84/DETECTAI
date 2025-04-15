@@ -1,0 +1,70 @@
+:root {
+    --primary: #8b5cf6;
+    --text-light: #f9fafb;
+    --neon-glow: 0 0 12px rgba(139, 92, 246, 0.7);
+    --bg-gradient: linear-gradient(145deg, #0f0f0f, #1c1c1c);
+  }
+  
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg-gradient);
+    color: var(--text-light);
+  }
+  
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    padding-top: 80px;
+    text-align: center;
+  }
+  
+  .typing-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+    animation: typing 3.5s steps(40, end) forwards, blink 0.8s step-end infinite;
+    text-shadow: var(--neon-glow);
+    color: var(--text-light);
+  }
+  
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+  
+  @keyframes blink {
+    0%, 100% {
+      border-color: transparent;
+    }
+    50% {
+      border-color: var(--primary);
+    }
+  }
+  
+  .bot-wave {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .bot-gif {
+    max-width: 280px;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.6);
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+    100% { transform: translateY(0); }
+  }
+  

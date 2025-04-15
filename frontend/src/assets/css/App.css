@@ -1,0 +1,62 @@
+/* Global Styles */
+:root {
+  --primary: #8b5cf6;
+  --primary-dark: #6d28d9;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --neon-glow: 0 0 12px rgba(139, 92, 246, 0.7);
+  --bg-gradient: linear-gradient(145deg, #0f0f0f, #1c1c1c);
+  --text-light: #f9fafb;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg-gradient);
+  color: var(--text-light);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.app-container {
+  padding: 40px 20px;
+}
+
+.app-header {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.app-name {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-light);
+  text-shadow: var(--neon-glow);
+}
+
+/* Generic container for Home and About pages */
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px 20px;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+  color: var(--text-light);
+  text-shadow: var(--neon-glow);
+  margin-bottom: 20px;
+}
+
+.placeholder {
+  font-size: 1.2rem;
+  opacity: 0.8;
+  text-align: center;
+  margin-top: 40px;
+}
