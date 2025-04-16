@@ -1,51 +1,54 @@
 pipeline {
     agent any
 
-    options {
-        timeout(time: 30, unit: 'MINUTES') // Increase timeout for the entire pipeline
+    environment {
+        IMAGE_TAG = 'latest' // You can change this if you need versioning
     }
 
     stages {
+        stage('Checkout SCM') {
+            steps {
+                checkout scm
+            }
+        }
+
         stage('Clean Workspace') {
             steps {
-                deleteDir() // Clean the workspace
+                deleteDir()
             }
         }
 
-        stage('Clone Repository') {
+        stage('Build Docker Images') {
             steps {
                 script {
-                    // Perform a shallow clone to reduce the repository size and time
-                    checkout([$class: 'GitSCM', 
-                              branches: [[name: '*/master']], 
-                              userRemoteConfigs: [[url: 'https://github.com/vinodravi84/DETECTAI.git', depth: 1]]])
+                    // Run build.sh to build the backend and frontend Docker images
+                    sh './build.sh'
                 }
-            }
-        }
-
-        stage('Build') {
-            steps {
-                // Add your build steps here, for example:
-                echo 'Building the project...'
-                // sh './build.sh'
             }
         }
 
         stage('Deploy') {
             steps {
-                // Add your deploy steps here, for example:
-                echo 'Deploying the project...'
-                // sh './deploy.sh'
+                script {
+                    // Run deploy.sh to deploy the app using Docker Compose
+                    sh './deploy.sh'
+                }
+            }
+        }
+
+        stage('Post Actions') {
+            steps {
+                echo 'Pipeline succeeded!'
             }
         }
     }
 
     post {
         success {
-            echo 'Pipeline succeeded!'
+            echo "Deployment succeeded!"
         }
         failure {
-            echo 'Pipeline failed!'
+            echo "Deployment failed!"
         }
     }
 }
