@@ -1,7 +1,23 @@
 pipeline {
     agent any
 
+    options {
+        skipDefaultCheckout()
+    }
+
     stages {
+        stage('Clean Workspace') {
+            steps {
+                deleteDir() // Clean any previous Git metadata
+            }
+        }
+
+        stage('Clone Repository') {
+            steps {
+                git branch: 'master', url: 'https://github.com/vinodravi84/DETECTAI.git'
+            }
+        }
+
         stage('Build') {
             steps {
                 script {
@@ -11,6 +27,7 @@ pipeline {
                 }
             }
         }
+
         stage('Deploy') {
             steps {
                 script {
