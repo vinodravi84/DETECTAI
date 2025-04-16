@@ -1,54 +1,56 @@
 pipeline {
     agent any
-
     environment {
-        IMAGE_TAG = 'latest' // You can change this if you need versioning
+        // Define any necessary environment variables here
     }
-
     stages {
         stage('Checkout SCM') {
             steps {
+                echo 'Checking out the repository'
                 checkout scm
             }
         }
 
         stage('Clean Workspace') {
             steps {
-                deleteDir()
+                echo 'Cleaning workspace'
+                deleteDir() // Clean the workspace before building
             }
         }
 
-        stage('Build Docker Images') {
+        stage('Clone Repository') {
             steps {
+                echo 'Cloning the repository'
+                checkout scm
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo 'Building the project'
                 script {
-                    // Run build.sh to build the backend and frontend Docker images
-                    sh './scripts/build.sh'
+                    // Run the build.sh script from the correct path
+                    sh './jenkins/scripts/build.sh'
                 }
             }
         }
 
         stage('Deploy') {
             steps {
+                echo 'Deploying the project'
                 script {
-                    // Run deploy.sh to deploy the app using Docker Compose
-                    sh './scripts/deploy.sh'
+                    // Run the deploy.sh script from the correct path
+                    sh './jenkins/scripts/deploy.sh'
                 }
             }
         }
-
-        stage('Post Actions') {
-            steps {
-                echo 'Pipeline succeeded!'
-            }
-        }
     }
-
     post {
         success {
-            echo "Deployment succeeded!"
+            echo 'Pipeline succeeded!'
         }
         failure {
-            echo "Deployment failed!"
+            echo 'Pipeline failed.'
         }
     }
 }
