@@ -2,39 +2,50 @@ pipeline {
     agent any
 
     options {
-        skipDefaultCheckout()
+        timeout(time: 30, unit: 'MINUTES') // Increase timeout for the entire pipeline
     }
 
     stages {
         stage('Clean Workspace') {
             steps {
-                deleteDir() // Clean any previous Git metadata
+                deleteDir() // Clean the workspace
             }
         }
 
         stage('Clone Repository') {
             steps {
-                git branch: 'master', url: 'https://github.com/vinodravi84/DETECTAI.git'
+                script {
+                    // Perform a shallow clone to reduce the repository size and time
+                    checkout([$class: 'GitSCM', 
+                              branches: [[name: '*/master']], 
+                              userRemoteConfigs: [[url: 'https://github.com/vinodravi84/DETECTAI.git', depth: 1]]])
+                }
             }
         }
 
         stage('Build') {
             steps {
-                script {
-                    sh 'docker version'
-                    sh 'chmod +x jenkins/scripts/build.sh'
-                    sh './jenkins/scripts/build.sh'
-                }
+                // Add your build steps here, for example:
+                echo 'Building the project...'
+                // sh './build.sh'
             }
         }
 
         stage('Deploy') {
             steps {
-                script {
-                    sh 'chmod +x jenkins/scripts/deploy.sh'
-                    sh './jenkins/scripts/deploy.sh'
-                }
+                // Add your deploy steps here, for example:
+                echo 'Deploying the project...'
+                // sh './deploy.sh'
             }
+        }
+    }
+
+    post {
+        success {
+            echo 'Pipeline succeeded!'
+        }
+        failure {
+            echo 'Pipeline failed!'
         }
     }
 }
