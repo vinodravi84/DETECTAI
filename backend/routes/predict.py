@@ -6,7 +6,8 @@ import torch
 from torchvision import transforms
 from models.model import CIFARResNet18
 from cifar100_classes import cifar100_classes
-from torch.nn.functional import softmax  # Import softmax to compute probability
+from torch.nn.functional import softmax
+import requests  # <-- To download model
 
 router = APIRouter()
 
@@ -19,7 +20,27 @@ transform = transforms.Compose([
                          std=(0.2673, 0.2564, 0.2762))
 ])
 
+def download_model_if_needed():
+    model_path = "models/model.pth"
+    if not os.path.exists(model_path):
+        print("model.pth not found. Downloading model...")
+        os.makedirs("models", exist_ok=True)
+        
+        # Replace this URL with your real model download link
+        model_url = "https://drive.google.com/file/d/1MZBjCpXU1JPctsgljgzTk7jOJ88YIBo4/view?usp=drive_link"
+        
+        response = requests.get(model_url, stream=True)
+        if response.status_code == 200:
+            with open(model_path, "wb") as f:
+                for chunk in response.iter_content(chunk_size=8192):
+                    f.write(chunk)
+            print("Download completed successfully!")
+        else:
+            raise Exception(f"Failed to download model. Status code: {response.status_code}")
+
 def load_model():
+    download_model_if_needed()  # <-- Check and download if needed
+    
     model = CIFARResNet18(num_classes=100).to(device)
     checkpoint = torch.load("models/model.pth", map_location=device)
     model.load_state_dict(checkpoint['model_state_dict'])
@@ -40,7 +61,6 @@ def predict_image(image_path):
 
         with torch.no_grad():
             outputs = model(input_tensor)
-            # Apply softmax to get probabilities
             probabilities = softmax(outputs, dim=1)
             _, predicted = torch.max(outputs, 1)
             predicted_idx = predicted.item()
