@@ -6,6 +6,6 @@ uvicorn
 pillow
 python-multipart
 requests
-pytorch
+torch
 torchvision
 
