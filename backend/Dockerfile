@@ -33,7 +33,7 @@ FROM python:3.10-slim
 
 WORKDIR /app
 
-ENV PYTHONPATH=/usr/local/lib/python3.13/site-packages
+ENV PYTHONPATH=/usr/local/lib/python3.10/site-packages
 
 # Copy installed packages
 COPY --from=builder /build-output /usr/local/lib/python3.13/site-packages
