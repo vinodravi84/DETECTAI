@@ -42,7 +42,7 @@ def load_model():
     download_model_if_needed()  # <-- Check and download if needed
     
     model = CIFARResNet18(num_classes=100).to(device)
-    checkpoint = torch.load("models/model.pth", map_location=device)
+    checkpoint = torch.load("models/model.pth", map_location=device, weights_only=False)
     model.load_state_dict(checkpoint['model_state_dict'])
     model.eval()
     
