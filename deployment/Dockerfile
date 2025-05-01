@@ -36,4 +36,4 @@ COPY --from=frontend_build /app/frontend/build /app/frontend/build
 EXPOSE 8000
 
 # Set the entrypoint to run both backend and frontend (using Uvicorn for FastAPI backend)
-CMD uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+CMD ["python", "app.py"]
