@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apiUrl = "https://detectai-bt9o.onrender.com/";
+const apiUrl = "https://detectai-bt9o.onrender.com/api/predict";
 
 export const predictImage = async (file) => {
   const formData = new FormData();
