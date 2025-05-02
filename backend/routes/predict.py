@@ -8,6 +8,7 @@ from models.model import CIFARResNet18
 from cifar100_classes import cifar100_classes
 from torch.nn.functional import softmax
 import requests  # <-- To download model
+import gdown
 
 router = APIRouter()
 
@@ -25,18 +26,13 @@ def download_model_if_needed():
     if not os.path.exists(model_path):
         print("model.pth not found. Downloading model...")
         os.makedirs("models", exist_ok=True)
-        
-        # Replace this URL with your real model download link
-        model_url = "https://drive.google.com/file/d/1MZBjCpXU1JPctsgljgzTk7jOJ88YIBo4/view?usp=drive_link"
-        
-        response = requests.get(model_url, stream=True)
-        if response.status_code == 200:
-            with open(model_path, "wb") as f:
-                for chunk in response.iter_content(chunk_size=8192):
-                    f.write(chunk)
-            print("Download completed successfully!")
-        else:
-            raise Exception(f"Failed to download model. Status code: {response.status_code}")
+
+        # Google Drive file ID (from your link)
+        file_id = "1MZBjCpXU1JPctsgljgzTk7jOJ88YIBo4"
+        url = f"https://drive.google.com/uc?id={file_id}"
+
+        gdown.download(url, model_path, quiet=False)
+        print("Download completed successfully!")
 
 def load_model():
     download_model_if_needed()  # <-- Check and download if needed
