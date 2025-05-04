@@ -8,8 +8,18 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Install gdown to download from Google Drive
+RUN pip install gdown
+
 # Copy the backend source code into the container
 COPY . .
+
+# Create models directory if it doesn't exist
+RUN mkdir -p models
+
+# Download the model file from Google Drive using gdown
+# Replace YOUR_FILE_ID with the actual file ID from the shareable Drive link
+RUN gdown --id 1MZBjCpXU1JPctsgljgzTk7jOJ88YIBo4 -O models/model.pth
 
 # Expose the FastAPI port
 EXPOSE 8000
