@@ -13,4 +13,6 @@ fi
 docker-compose down
 
 # Start the containers in detached mode
+
 docker-compose up -d
+

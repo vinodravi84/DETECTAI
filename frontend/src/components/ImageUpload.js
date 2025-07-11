@@ -52,7 +52,7 @@ const ImageUpload = () => {
     formData.append("file", selectedImage);
 
     try {
-      const res = await axios.post("http://127.0.0.1:8000/api/predict", formData);
+      const res = await axios.post("https://detectai-bt9o.onrender.com/api/predict", formData);
 
       setTimeout(() => {
         setPrediction(res.data.prediction);

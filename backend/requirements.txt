@@ -5,5 +5,7 @@ fastapi
 uvicorn
 pillow
 python-multipart
-
-numpy==1.26.4
+requests
+torch
+torchvision
+gdown

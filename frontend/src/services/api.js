@@ -1,10 +1,12 @@
 import axios from "axios";
 
-const apiUrl = "http://127.0.0.1:8000/api/predict";
+const apiUrl = "https://detectai-bt9o.onrender.com/api/predict";
 
 export const predictImage = async (file) => {
   const formData = new FormData();
   formData.append("file", file);
+  console.log("API URL:", apiUrl);
+
 
   try {
     const response = await axios.post(apiUrl, formData, {
