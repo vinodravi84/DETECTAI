@@ -10,8 +10,8 @@ device = "cuda" if torch.cuda.is_available() else "cpu"
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Load CLIP model (ViT-L/14@336px)
-print("🔁 Loading CLIP model RN50...")
-model, preprocess = clip.load("RN50", device=device)
+print("🔁 Loading CLIP model ViT-B/32...")
+model, preprocess = clip.load("ViT-B/32", device=device)
 model.eval()
 print("✅ CLIP model loaded.")
 
