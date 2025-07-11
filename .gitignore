@@ -13,3 +13,10 @@ backend/train.py
 backend/output/
 l.py
 ll.py
+
+backend/download.py
+backend/imagenet21k_labels.csv
+backend/images (4).jpeg
+backend/maple.jpeg
+backend/uploads/
+backend/yolov8x.pt

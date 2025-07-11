@@ -1,24 +1,44 @@
 pipeline {
     agent any
     environment {
-        DOCKER_IMAGE_BACKEND = "image-recognition-backend"
-        DOCKER_IMAGE_FRONTEND = "image-recognition-frontend"
+        // Set environment variables if needed
+        DOCKER_BUILDKIT = '1'
+
     }
     stages {
-        stage('Clone Repository') {
+        stage('Checkout') {
             steps {
-                git 'https://github.com/your-repo/image-recognition-app.git'
+                // Checkout the repository
+                git branch: 'master', url: 'https://github.com/vinodravi84/DETECTAI.git'
             }
         }
-        stage('Build Docker Images') {
+        stage('Build') {
             steps {
-                sh 'sh jenkins/scripts/build.sh'
+                script {
+                    // Make sure build.sh is executable
+                    sh 'chmod +x jenkins/scripts/build.sh'
+                    // Execute the build script
+                    sh './jenkins/scripts/build.sh'
+                }
             }
         }
-        stage('Deploy Containers') {
+        stage('Deploy') {
             steps {
-                sh 'sh jenkins/scripts/deploy.sh'
+                script {
+                    // Make sure deploy.sh is executable
+                    sh 'chmod +x jenkins/scripts/deploy.sh'
+                    // Execute the deploy script
+                    sh './jenkins/scripts/deploy.sh'
+                }
             }
+        }
+    }
+    post {
+        success {
+            echo 'Pipeline succeeded!'
+        }
+        failure {
+            echo 'Pipeline failed!'
         }
     }
 }
