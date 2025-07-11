@@ -9,3 +9,8 @@ requests
 torch
 torchvision
 gdown
+ftfy
+regex
+tqdm
+clip-by-openai
+Pillow
