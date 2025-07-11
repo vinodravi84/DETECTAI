@@ -4,12 +4,6 @@ import shutil
 import torch
 import clip
 from PIL import Image
-from torchvision import transforms
-from models.model import CIFARResNet18
-from cifar100_classes import cifar100_classes
-from torch.nn.functional import softmax
-import requests  # <-- To download model
-import gdown
 
 router = APIRouter()
 device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -25,7 +19,6 @@ print("✅ CLIP model loaded.")
 # Load class names from file
 CLASS_LIST_PATH = os.path.join(os.path.dirname(__file__), "..", "common_classes.txt")
 
-
 def load_class_names():
     if not os.path.exists(CLASS_LIST_PATH):
         raise FileNotFoundError(f"❌ {CLASS_LIST_PATH} not found. Please add your class list.")
@@ -34,7 +27,6 @@ def load_class_names():
     if not class_names:
         raise ValueError("⚠️ No valid class names found in class list.")
     return class_names
-
 
 CLASS_LABELS = load_class_names()
 
@@ -47,6 +39,15 @@ def predict_clip(image_path: str, class_names: list):
         text_tokens = clip.tokenize(class_names).to(device)
 
         with torch.no_grad():
+            image_features = model.encode_image(image_input)
+            text_features = model.encode_text(text_tokens)
+
+            logits_per_image = image_features @ text_features.T
+            probs = logits_per_image.softmax(dim=-1).cpu().numpy()
+
+        top_index = probs[0].argmax()
+        return class_names[top_index], float(probs[0][top_index])
+
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Prediction error: {str(e)}")
 
