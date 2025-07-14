@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apiUrl = "https://vinod1122-detectai.hf.space/api/predict";
+const apiUrl = "https://vinod1122-detectai.hf.space/api/predict_clip";
 
 export const predictImage = async (file) => {
   const formData = new FormData();
