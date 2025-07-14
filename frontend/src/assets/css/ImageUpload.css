@@ -344,10 +344,20 @@
 
   /* Lottie: much smaller */
   body .futuristic-container .lottie-player {
-    max-width: 100px !important;
+    display: block !important;
+    max-width: 80px !important;      /* smaller width */
     width: 80px !important;
-    margin: 8px auto 0 auto !important;
+    height: auto !important;
+    margin: 20px auto 40px auto !important; /* push down with spacing */
+    order: 999 !important;            /* if it's in flex flow, send to end */
+    position: static !important;      /* ensure not fixed */
   }
+
+  /* Ensure the container allows content below */
+  body .futuristic-container {
+    flex-wrap: wrap !important;
+  }
+}
 
   /* Preview card: adjust padding and width */
   body .futuristic-container .preview-card {
