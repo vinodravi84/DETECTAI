@@ -1,81 +1,82 @@
 /* Container for ImageUpload component */
 .futuristic-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
+  align-items: flex-start;
   padding: 40px 20px;
   text-align: center;
   min-height: 100vh;
+  overflow-y: auto; /* Page scrollable, not inner divs */
   box-sizing: border-box;
-  overflow-x: hidden;
+  flex-direction: column;
 }
 
 /* Glassmorphism drop area */
 .drop-area {
   width: 100%;
   max-width: 600px;
-  min-height: 260px;
+  height: auto;
+  min-height: 250px;
   background: var(--glass-bg);
   backdrop-filter: blur(12px);
-  border: 2px dashed #00f0ff;
+  border: 2px dashed var(--primary);
   border-radius: 20px;
-  padding: clamp(30px, 5vw, 50px);
+  padding: 40px 20px;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 0 20px var(--neon-glow);
-  margin-top: 60px;
+  margin: 80px auto 20px auto;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  position: relative;
+  text-align: center;
 }
 
-.drop-area:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: var(--primary-dark);
-  transform: translateY(-3px);
+/* Lottie Player stays visible and responsive */
+.lottie-player {
+  width: 100%;
+  max-width: 300px;
+  margin-top: 20px;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
-/* Upload label */
-.fancy-upload-label span.glow-text {
-  font-size: clamp(1rem, 4vw, 1.4rem);
-  font-weight: bold;
-  color: var(--text-light);
-  text-shadow: var(--neon-glow);
-}
-
-/* Preview card */
+/* Preview card styling */
 .preview-card {
   background: var(--glass-bg);
   backdrop-filter: blur(12px);
   border: 1px solid var(--glass-border);
   border-radius: 20px;
-  padding: clamp(20px, 5vw, 30px);
+  padding: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-  margin-top: 40px;
+  margin: 30px auto;
   width: 100%;
   max-width: 600px;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
-  box-sizing: border-box;
 }
 
 /* Image preview */
 .image-preview {
   width: 100%;
-  max-height: 300px;
+  max-width: 100%;
+  height: auto;
+  max-height: 280px;
   object-fit: contain;
   border-radius: 15px;
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
 }
 
-/* Placeholder for preview */
+/* Placeholder when image isn't present */
 .image-preview-placeholder {
   width: 100%;
-  height: 300px;
+  max-width: 100%;
+  height: 280px;
   border-radius: 15px;
   background: rgba(255, 255, 255, 0.03);
   border: 2px dashed var(--glass-border);
@@ -84,20 +85,6 @@
   align-items: center;
   font-size: 1rem;
   color: var(--text-light);
-}
-
-/* Prediction box */
-.prediction-box {
-  background: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--glass-border);
-  border-radius: 15px;
-  padding: 15px;
-  margin-top: 20px;
-  color: #c4b5fd;
-  font-weight: bold;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  font-size: 1.1rem;
 }
 
 /* Button container */
@@ -114,14 +101,14 @@
 .remove-button {
   background: var(--primary);
   color: #fff;
-  padding: 12px 24px;
+  padding: 10px 20px;
   border: none;
   border-radius: 10px;
   font-weight: bold;
   cursor: pointer;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
   box-shadow: var(--neon-glow);
-  font-size: 1rem;
+  font-size: 0.95rem;
 }
 
 .glow-button:hover {
@@ -136,26 +123,23 @@
 
 .remove-button:hover {
   background: #dc2626;
-  transform: translateY(-2px);
 }
 
-/* Disabled button styling */
-.glow-button:disabled,
-.remove-button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  transform: none;
-  box-shadow: none;
+/* Text styles */
+.glow-text {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--text-light);
+  text-shadow: 0 0 10px var(--primary);
 }
 
-/* Glowing result text */
 .result-glow {
   font-size: 1.3rem;
+  font-weight: bold;
   color: #00f0ff;
   text-align: center;
   animation: neonPulse 2s ease-in-out infinite;
   margin-top: 15px;
-  font-weight: bold;
 }
 
 @keyframes neonPulse {
@@ -167,107 +151,100 @@
   }
 }
 
-/* Upload animation box (for GIF & text) */
-.upload-animation-box {
-  text-align: center;
-  margin-top: 30px;
-  background: transparent;
-  border: none;
-}
-
+/* Upload glow text */
 .upload-here-glow {
-  font-size: clamp(1rem, 4vw, 1.4rem);
+  font-size: 1.3rem;
   font-weight: bold;
   color: #00f0ff;
-  text-shadow: 0 0 5px #00f0ff, 0 0 10px #00f0ff, 0 0 20px #00f0ff;
+  text-shadow: 0 0 10px #00f0ff;
   margin-top: 15px;
   animation: neonPulse 2s ease-in-out infinite;
 }
 
-/* Overlay animation text inside drop */
-.upload-label-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
+/* Prediction box */
+.prediction-box {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 15px;
+  padding: 15px;
+  margin-top: 20px;
+  color: #c4b5fd;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   width: 100%;
-  height: 100%;
-  display: flex;           
-  justify-content: center;
-  align-items: center;
-  pointer-events: none;
-  z-index: 10;
+  text-align: center;
 }
 
-.upload-label-slide-up {
-  animation: slideUpFade 0.5s ease-in forwards;
+/* Disabled buttons */
+.glow-button:disabled,
+.remove-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
 }
 
-@keyframes slideUpFade {
-  0% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(-40px);
-  }
+/* Processing Box & Animation */
+.processing-box, .animation-box {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  padding: 20px;
+  z-index: 9999;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  max-width: 300px;
 }
 
-/* Fade in animation */
-.fade-in {
-  animation: fadeInSmooth 0.8s ease-in-out forwards;
-  opacity: 0;
+.processing-box .glow-text {
+  margin-top: 10px;
+  color: #00ffff;
+  font-weight: bold;
+  font-size: 1.1rem;
 }
 
-@keyframes fadeInSmooth {
-  0% {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* Right-side animation box (desktop only) */
-.animation-box,
-.processing-box {
-  display: none; /* Hide on mobile by default */
-}
-
-/* Lottie player */
-.lottie-player {
-  background-color: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  max-width: 250px;
-  width: 100%;
-  margin: 20px auto 0 auto;
-}
-
-/* Media queries */
-@media (min-width: 768px) {
-  .animation-box,
-  .processing-box {
-    display: block;
-    position: fixed;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-    padding: 20px;
-    max-width: 280px;
-    z-index: 9999;
-    text-align: center;
-    background: transparent;
-    border-radius: 1rem 0 0 1rem;
-    box-shadow: none;
+/* Responsive tweaks for smaller screens */
+@media (max-width: 600px) {
+  .futuristic-container {
+    padding: 20px 10px;
   }
 
-  .processing-box .glow-text {
-    margin-top: 10px;
-    color: #00ffff;
-    font-weight: bold;
-    font-size: 1.2rem;
+  .drop-area {
+    padding: 30px 15px;
+    min-height: 200px;
+  }
+
+  .upload-here-glow {
+    font-size: 1.1rem;
+  }
+
+  .preview-card {
+    padding: 20px 15px;
+  }
+
+  .image-preview,
+  .image-preview-placeholder {
+    max-height: 200px;
+  }
+
+  .button-container {
+    gap: 10px;
+  }
+
+  .glow-button,
+  .remove-button {
+    padding: 8px 18px;
+    font-size: 0.9rem;
+  }
+
+  .prediction-box {
+    font-size: 0.95rem;
+  }
+
+  .lottie-player {
+    max-width: 220px;
   }
 }
