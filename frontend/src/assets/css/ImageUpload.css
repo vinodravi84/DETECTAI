@@ -384,12 +384,7 @@
     font-size: 0.9rem !important;
   }
 
-  /* 7. Force Lottie & side animations to bottom, tiny */
- /* ────────────────────────────────────────────── */
-/* 🔥 MOBILE LOTTIE FINAL TWEAK (≤600px) 🔥      */
-/* Paste this at the very end of imageupload.css */
-/* ────────────────────────────────────────────── */
-@media (max-width: 600px) {
+
   /* Force Lottie & side animations to bottom, tiny */
   .lottie-player,
   .animation-box,
