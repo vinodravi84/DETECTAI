@@ -320,75 +320,80 @@
 /* ────────────────────────────────────────────── */
 /* ✅ Responsive Fixes for Mobile (≤ 600px) only */
 /* ────────────────────────────────────────────── */
+/* ────────────────────────────────────────────── */
+/* 🔥 FORCE MOBILE OVERRIDES FOR ≤600px ONLY 🔥 */
+/* ────────────────────────────────────────────── */
 @media (max-width: 600px) {
-  .futuristic-container {
-    padding: 10px 8px;
-    flex-direction: column;
-    align-items: center;
+  /* Container tweaks */
+  body .futuristic-container {
+    padding: 10px 8px !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    height: auto !important;
   }
 
-  .drop-area {
-    padding: 16px 10px;
-    margin-top: 10px; /* 🆙 Much closer to navbar */
-    min-height: 120px; /* 📏 Smaller height */
-    max-width: 85vw;
-    height: auto;
-    border-radius: 12px;
+  /* Drop area: moved up & shrunk */
+  body .futuristic-container .drop-area {
+    margin-top: 10px !important;
+    padding: 12px 8px !important;
+    min-height: 100px !important;
+    max-width: 90vw !important;
+    height: auto !important;
+    border-radius: 12px !important;
   }
 
-  .upload-here-glow {
-    font-size: 0.95rem;
-    margin-top: 6px;
+  /* Lottie: much smaller */
+  body .futuristic-container .lottie-player {
+    max-width: 100px !important;
+    width: 80px !important;
+    margin: 8px auto 0 auto !important;
   }
 
-  .preview-card {
-    padding: 16px 10px;
-    max-width: 90vw;
-    height: auto;
-    margin-top: 25px;
+  /* Preview card: adjust padding and width */
+  body .futuristic-container .preview-card {
+    padding: 14px 10px !important;
+    max-width: 92vw !important;
+    margin-top: 20px !important;
+    height: auto !important;
   }
 
-  .image-preview,
-  .image-preview-placeholder {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    max-height: 190px; /* 📦 Slightly smaller preview */
+  /* Image preview: cap height */
+  body .futuristic-container .image-preview,
+  body .futuristic-container .image-preview-placeholder {
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: 160px !important;
+    height: auto !important;
   }
 
-  .button-container {
-    position: static;
-    margin-top: 15px;
-    flex-wrap: wrap;
-    gap: 8px;
+  /* Buttons: full‑width small buttons */
+  body .futuristic-container .button-container {
+    position: static !important;
+    margin-top: 12px !important;
+    gap: 6px !important;
+  }
+  body .futuristic-container .glow-button,
+  body .futuristic-container .remove-button {
+    padding: 8px 16px !important;
+    font-size: 0.85rem !important;
+    width: 100% !important;
+    max-width: 140px !important;
   }
 
-  .glow-button,
-  .remove-button {
-    padding: 9px 18px;
-    font-size: 0.9rem;
-    width: 100%;
-    max-width: 160px;
+  /* Prediction box: full width */
+  body .futuristic-container .prediction-box {
+    width: 100% !important;
+    font-size: 0.9rem !important;
   }
 
-  .prediction-box {
-    font-size: 0.95rem;
-    width: 100%;
-  }
-
-  .processing-box,
-  .animation-box {
-    top: unset;
-    bottom: 15px;
-    transform: none;
-    right: 8px;
-    max-width: 85vw;
-    padding: 8px;
-  }
-
-  .lottie-player {
-    max-width: 140px; /* 🎯 Even smaller animation */
-    width: 100%;
-    margin: 10px auto 0 auto;
+  /* Right‑side animations: float below page */
+  body .futuristic-container .processing-box,
+  body .futuristic-container .animation-box {
+    position: static !important;
+    margin: 20px auto 0 auto !important;
+    max-width: 90vw !important;
+    padding: 6px !important;
+    transform: none !important;
   }
 }
+
