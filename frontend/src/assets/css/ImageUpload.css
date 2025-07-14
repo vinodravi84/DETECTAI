@@ -320,29 +320,35 @@
 /* ────────────────────────────────────────────── */
 /* ✅ Responsive Fixes for Mobile (≤ 600px) only */
 /* ────────────────────────────────────────────── */
+/* ────────────────────────────────────────────── */
+/* ✅ Improved Mobile Support (≤ 600px) ONLY     */
+/* ────────────────────────────────────────────── */
 @media (max-width: 600px) {
   .futuristic-container {
-    padding: 20px 10px;
+    padding: 15px 10px;
     flex-direction: column;
     align-items: center;
   }
 
   .drop-area {
-    padding: 30px 15px;
-    margin-top: 60px;
-    min-height: 180px;
-    max-width: 90vw;
+    padding: 20px 12px;
+    margin-top: 30px; /* 📍Closer to navbar */
+    min-height: 140px; /* 📦 Smaller height */
+    max-width: 85vw;
+    height: auto;
+    border-radius: 12px;
   }
 
   .upload-here-glow {
-    font-size: 1.1rem;
-    margin-top: 10px;
+    font-size: 1rem;
+    margin-top: 8px;
   }
 
   .preview-card {
-    padding: 20px 15px;
+    padding: 18px 12px;
     max-width: 90vw;
     height: auto;
+    margin-top: 25px;
   }
 
   .image-preview,
@@ -350,41 +356,41 @@
     width: 100%;
     max-width: 100%;
     height: auto;
-    max-height: 220px;
+    max-height: 200px; /* 📦 Slightly smaller preview */
   }
 
   .button-container {
     position: static;
     margin-top: 15px;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 8px;
   }
 
   .glow-button,
   .remove-button {
-    padding: 10px 20px;
-    font-size: 0.95rem;
+    padding: 9px 18px;
+    font-size: 0.9rem;
     width: 100%;
-    max-width: 180px;
+    max-width: 160px;
   }
 
   .prediction-box {
-    font-size: 1rem;
+    font-size: 0.95rem;
     width: 100%;
   }
 
   .processing-box,
   .animation-box {
     top: unset;
-    bottom: 20px;
+    bottom: 15px;
     transform: none;
-    right: 10px;
-    max-width: 90vw;
-    padding: 10px;
+    right: 8px;
+    max-width: 85vw;
+    padding: 8px;
   }
 
   .lottie-player {
-    max-width: 240px;
+    max-width: 180px; /* 🎯 Smaller Lottie animation */
     width: 100%;
     margin: 10px auto 0 auto;
   }
