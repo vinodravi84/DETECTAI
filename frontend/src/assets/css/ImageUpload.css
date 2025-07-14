@@ -5,42 +5,41 @@
   align-items: flex-start;
   padding: 40px 20px;
   text-align: center;
-  min-height: 100vh;
-  overflow-y: auto; /* Page scrollable, not inner divs */
-  box-sizing: border-box;
-  flex-direction: column;
+  height: 100vh;
 }
 
 /* Glassmorphism drop area */
 .drop-area {
   width: 100%;
   max-width: 600px;
-  height: auto;
-  min-height: 250px;
+  height: 300px;
   background: var(--glass-bg);
   backdrop-filter: blur(12px);
   border: 2px dashed var(--primary);
   border-radius: 20px;
-  padding: 40px 20px;
+  padding: 50px 30px;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 0 20px var(--neon-glow);
-  margin: 80px auto 20px auto;
+  margin-top: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   text-align: center;
 }
 
-/* Lottie Player stays visible and responsive */
-.lottie-player {
-  width: 100%;
-  max-width: 300px;
-  margin-top: 20px;
-  background-color: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
+.drop-area:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--primary-dark);
+  transform: translateY(-3px);
+}
+
+.fancy-upload-label span.glow-text {
+  display: block;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--text-light);
+  text-shadow: var(--neon-glow);
 }
 
 /* Preview card styling */
@@ -49,42 +48,39 @@
   backdrop-filter: blur(12px);
   border: 1px solid var(--glass-border);
   border-radius: 20px;
-  padding: 20px;
+  padding: 30px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-  margin: 30px auto;
+  margin-top: 40px;
   width: 100%;
   max-width: 600px;
-  height: auto;
+  height: 400px; /* Increased height to prevent shifting */
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
+  flex-direction: column; /* Stack image and buttons vertically */
+  justify-content: space-between; /* Space between image and buttons */
+  align-items: center; /* Center content horizontally */
+  position: relative; /* To position buttons at the bottom */
 }
 
 /* Image preview */
 .image-preview {
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-  max-height: 280px;
+  width: 600px;  /* Increased size to 600px */
+  height: 300px; /* Increased height to 300px */
   object-fit: contain;
   border-radius: 15px;
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
 }
 
-/* Placeholder when image isn't present */
-.image-preview-placeholder {
-  width: 100%;
-  max-width: 100%;
-  height: 280px;
+/* Prediction box styling */
+.prediction-box {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
   border-radius: 15px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 2px dashed var(--glass-border);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1rem;
-  color: var(--text-light);
+  padding: 15px;
+  margin-top: 20px;
+  color: #c4b5fd;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 /* Button container */
@@ -92,8 +88,9 @@
   display: flex;
   gap: 15px;
   justify-content: center;
-  margin-top: 20px;
-  flex-wrap: wrap;
+  position: absolute; /* Position buttons at the bottom */
+  bottom: 15px; /* Distance from the bottom */
+  width: 100%; /* Make buttons span full width */
 }
 
 /* Buttons styling */
@@ -101,14 +98,13 @@
 .remove-button {
   background: var(--primary);
   color: #fff;
-  padding: 10px 20px;
+  padding: 12px 24px;
   border: none;
   border-radius: 10px;
   font-weight: bold;
   cursor: pointer;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
   box-shadow: var(--neon-glow);
-  font-size: 0.95rem;
 }
 
 .glow-button:hover {
@@ -123,6 +119,7 @@
 
 .remove-button:hover {
   background: #dc2626;
+  transform: translateY(-2px);
 }
 
 /* Text styles */
@@ -134,12 +131,141 @@
 }
 
 .result-glow {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: bold;
+  color: #4b5563;
+  text-shadow: 0 0 5px var(--primary);
+}
+
+/* Container for the upload overlay inside the preview card */
+.upload-label-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;           
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Animate the upload text: slide up 40px and fade out */
+.upload-label-slide-up {
+  animation: slideUpFade 0.5s ease-in forwards;
+}
+
+@keyframes slideUpFade {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+}
+
+/* Fade in image */
+.fade-in {
+  animation: fadeInSmooth 0.8s ease-in-out forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInSmooth {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.loading-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+}
+
+/* Processing box for animations on the right side */
+.processing-box {
+  background: transparent; /* Ensure transparent background */
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  padding: 20px;
+  border-radius: 1rem 0 0 1rem;
+  z-index: 9999;
+  text-align: center;
+}
+
+.processing-box .glow-text {
+  margin-top: 10px;
+  color: #00ffff;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* Right side animation container */
+.animation-box {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  padding: 20px;
+  border-radius: 1rem 0 0 1rem;
+  z-index: 9999;
+  background: transparent; /* Transparent background */
+  border: none;
+  box-shadow: none;
+  max-width: 300px;
+}
+
+/* Loading text under animations */
+.processing-box p.glow-text,
+.processing-box p.result-glow {
+  margin-top: 15px;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* Maintain placeholder size if image isn't shown */
+.preview-card .image-preview-placeholder {
+  width: 600px;
+  height: 300px;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 2px dashed var(--glass-border);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  color: var(--text-light);
+}
+
+/* Disabled button styling */
+.glow-button:disabled,
+.remove-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Neon glowing result text */
+.result-glow {
+  font-size: 1.3rem;
   color: #00f0ff;
   text-align: center;
   animation: neonPulse 2s ease-in-out infinite;
   margin-top: 15px;
+  font-weight: bold;
 }
 
 @keyframes neonPulse {
@@ -151,100 +277,115 @@
   }
 }
 
-/* Upload glow text */
+/* Upload animation box for the "Upload Here" text and GIF */
+.upload-animation-box {
+  text-align: center;
+  margin-top: 30px;
+  background: transparent;
+  border: none;
+}
+
+/* Glowing "Upload Here" text styling */
 .upload-here-glow {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   font-weight: bold;
   color: #00f0ff;
-  text-shadow: 0 0 10px #00f0ff;
+  text-shadow: 0 0 5px #00f0ff, 0 0 10px #00f0ff, 0 0 20px #00f0ff;
   margin-top: 15px;
   animation: neonPulse 2s ease-in-out infinite;
 }
 
-/* Prediction box */
-.prediction-box {
-  background: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--glass-border);
+/* Updated drop area with transparent background for GIFs */
+.drop-area {
+  border: 2px dashed #00f0ff;
+  padding: 40px;
   border-radius: 15px;
-  padding: 15px;
-  margin-top: 20px;
-  color: #c4b5fd;
-  font-weight: bold;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  width: 100%;
+  cursor: pointer;
   text-align: center;
+  position: relative;
+  transition: 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--glass-bg);
 }
 
-/* Disabled buttons */
-.glow-button:disabled,
-.remove-button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  box-shadow: none;
-  transform: none;
+/* Generic rule to ensure Lottie animations have transparent backgrounds */
+.lottie-player {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }
-
-/* Processing Box & Animation */
-.processing-box, .animation-box {
-  position: fixed;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
-  padding: 20px;
-  z-index: 9999;
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  max-width: 300px;
-}
-
-.processing-box .glow-text {
-  margin-top: 10px;
-  color: #00ffff;
-  font-weight: bold;
-  font-size: 1.1rem;
-}
-
-/* Responsive tweaks for smaller screens */
+/* ────────────────────────────────────────────── */
+/* ✅ Responsive Fixes for Mobile (≤ 600px) only */
+/* ────────────────────────────────────────────── */
 @media (max-width: 600px) {
   .futuristic-container {
     padding: 20px 10px;
+    flex-direction: column;
+    align-items: center;
   }
 
   .drop-area {
     padding: 30px 15px;
-    min-height: 200px;
+    margin-top: 60px;
+    min-height: 180px;
+    max-width: 90vw;
   }
 
   .upload-here-glow {
     font-size: 1.1rem;
+    margin-top: 10px;
   }
 
   .preview-card {
     padding: 20px 15px;
+    max-width: 90vw;
+    height: auto;
   }
 
   .image-preview,
   .image-preview-placeholder {
-    max-height: 200px;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    max-height: 220px;
   }
 
   .button-container {
+    position: static;
+    margin-top: 15px;
+    flex-wrap: wrap;
     gap: 10px;
   }
 
   .glow-button,
   .remove-button {
-    padding: 8px 18px;
-    font-size: 0.9rem;
+    padding: 10px 20px;
+    font-size: 0.95rem;
+    width: 100%;
+    max-width: 180px;
   }
 
   .prediction-box {
-    font-size: 0.95rem;
+    font-size: 1rem;
+    width: 100%;
+  }
+
+  .processing-box,
+  .animation-box {
+    top: unset;
+    bottom: 20px;
+    transform: none;
+    right: 10px;
+    max-width: 90vw;
+    padding: 10px;
   }
 
   .lottie-player {
-    max-width: 220px;
+    max-width: 240px;
+    width: 100%;
+    margin: 10px auto 0 auto;
   }
 }
