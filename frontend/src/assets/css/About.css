@@ -6,8 +6,9 @@
   background: rgba(255, 255, 255, 0.05);
   border-radius: 10px;
   box-shadow: 0 4px 20px rgba(168, 85, 247, 0.15);
-  height: calc(100vh - 120px);
-  overflow-y: auto;
+  /* ✨ REMOVE fixed height and internal scroll */
+  /* height: calc(100vh - 120px); */
+  /* overflow-y: auto; */
 }
 
 .about-header {
@@ -88,7 +89,7 @@
   margin: 0 auto;
 }
 
-/* Optional: prevent overflow on tiny screens */
+/* Mobile responsiveness */
 @media (max-width: 480px) {
   .about-container {
     padding: 20px;
