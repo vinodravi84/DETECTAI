@@ -321,7 +321,8 @@
 /* ✅ Responsive Fixes for Mobile (≤ 600px) only */
 /* ────────────────────────────────────────────── */
 /* ────────────────────────────────────────────── */
-/* 🔥 FORCE MOBILE OVERRIDES FOR ≤600px ONLY 🔥 */
+/* ────────────────────────────────────────────── */
+/* 🔥 FULL MOBILE OVERRIDES FOR ≤600px ONLY 🔥 */
 /* ────────────────────────────────────────────── */
 @media (max-width: 600px) {
   /* Container tweaks */
@@ -329,6 +330,7 @@
     padding: 10px 8px !important;
     flex-direction: column !important;
     align-items: center !important;
+    flex-wrap: wrap !important;
     height: auto !important;
   }
 
@@ -341,23 +343,6 @@
     height: auto !important;
     border-radius: 12px !important;
   }
-
-  /* Lottie: much smaller */
-  body .futuristic-container .lottie-player {
-    display: block !important;
-    max-width: 80px !important;      /* smaller width */
-    width: 80px !important;
-    height: auto !important;
-    margin: 20px auto 40px auto !important; /* push down with spacing */
-    order: 999 !important;            /* if it's in flex flow, send to end */
-    position: static !important;      /* ensure not fixed */
-  }
-
-  /* Ensure the container allows content below */
-  body .futuristic-container {
-    flex-wrap: wrap !important;
-  }
-
 
   /* Preview card: adjust padding and width */
   body .futuristic-container .preview-card {
@@ -396,7 +381,18 @@
     font-size: 0.9rem !important;
   }
 
-  /* Right‑side animations: float below page */
+  /* Lottie: much smaller & pushed to bottom */
+  body .futuristic-container .lottie-player {
+    order: 999 !important;            /* ensure it's last */
+    display: block !important;
+    max-width: 80px !important;       /* smaller width */
+    width: 80px !important;
+    height: auto !important;
+    margin: 20px auto 40px auto !important; /* below all content */
+    position: static !important;
+  }
+
+  /* Right‑side animations (processing, animation boxes) */
   body .futuristic-container .processing-box,
   body .futuristic-container .animation-box {
     position: static !important;
@@ -406,4 +402,3 @@
     transform: none !important;
   }
 }
-
