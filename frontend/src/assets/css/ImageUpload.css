@@ -385,6 +385,12 @@
   }
 
   /* 7. Force Lottie & side animations to bottom, tiny */
+ /* ────────────────────────────────────────────── */
+/* 🔥 MOBILE LOTTIE FINAL TWEAK (≤600px) 🔥      */
+/* Paste this at the very end of imageupload.css */
+/* ────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  /* Force Lottie & side animations to bottom, tiny */
   .lottie-player,
   .animation-box,
   .processing-box {
@@ -394,12 +400,14 @@
     transform: none !important;
     display: block !important;
     order: 999 !important;
-    width: 60px !important;
-    max-width: 60px !important;
+    width: 50px !important;        /* 📏 smaller width */
+    max-width: 50px !important;    
     height: auto !important;
-    margin: 30px auto 20px auto !important;
+    margin: 10px auto 20px auto !important; /* 🔼 pulled up (10px top) */
     clear: both !important;
     z-index: 1 !important;
   }
 }
+
+
 
