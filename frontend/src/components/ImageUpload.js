@@ -52,7 +52,7 @@ const ImageUpload = () => {
     formData.append("file", selectedImage);
 
     try {
-      const res = await axios.post("https://vinod1122-detectai.hf.space/api/predict", formData);
+      const res = await axios.post("https://vinod1122-detectai.hf.space/api/predict_clip", formData);
 
       setTimeout(() => {
         setPrediction(res.data.prediction);
