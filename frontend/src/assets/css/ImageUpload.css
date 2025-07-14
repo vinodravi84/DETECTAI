@@ -323,82 +323,83 @@
 /* ────────────────────────────────────────────── */
 /* ────────────────────────────────────────────── */
 /* 🔥 FULL MOBILE OVERRIDES FOR ≤600px ONLY 🔥 */
+/* Paste this at the very end of imageupload.css */
 /* ────────────────────────────────────────────── */
 @media (max-width: 600px) {
-  /* Container tweaks */
-  body .futuristic-container {
-    padding: 10px 8px !important;
+  /* 1. Make main container flow top‑to‑bottom */
+  .futuristic-container {
+    display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    flex-wrap: wrap !important;
+    padding: 10px 8px !important;
     height: auto !important;
   }
 
-  /* Drop area: moved up & shrunk */
-  body .futuristic-container .drop-area {
+  /* 2. Shrink & move upload box up */
+  .drop-area {
     margin-top: 10px !important;
     padding: 12px 8px !important;
     min-height: 100px !important;
     max-width: 90vw !important;
-    height: auto !important;
+    width: 90vw !important;
     border-radius: 12px !important;
+    height: auto !important;
   }
 
-  /* Preview card: adjust padding and width */
-  body .futuristic-container .preview-card {
+  /* 3. Tweak preview card */
+  .preview-card {
+    margin-top: 20px !important;
     padding: 14px 10px !important;
     max-width: 92vw !important;
-    margin-top: 20px !important;
+    width: 92vw !important;
     height: auto !important;
   }
 
-  /* Image preview: cap height */
-  body .futuristic-container .image-preview,
-  body .futuristic-container .image-preview-placeholder {
-    width: 100% !important;
-    max-width: 100% !important;
+  /* 4. Cap image preview height */
+  .image-preview,
+  .image-preview-placeholder {
     max-height: 160px !important;
+    width: 100% !important;
     height: auto !important;
   }
 
-  /* Buttons: full‑width small buttons */
-  body .futuristic-container .button-container {
+  /* 5. Buttons become full-width small */
+  .button-container {
     position: static !important;
     margin-top: 12px !important;
     gap: 6px !important;
+    flex-wrap: wrap !important;
   }
-  body .futuristic-container .glow-button,
-  body .futuristic-container .remove-button {
+  .glow-button,
+  .remove-button {
     padding: 8px 16px !important;
     font-size: 0.85rem !important;
     width: 100% !important;
     max-width: 140px !important;
   }
 
-  /* Prediction box: full width */
-  body .futuristic-container .prediction-box {
+  /* 6. Prediction box spans full width */
+  .prediction-box {
     width: 100% !important;
     font-size: 0.9rem !important;
   }
 
-  /* Lottie: much smaller & pushed to bottom */
-  body .futuristic-container .lottie-player {
-    order: 999 !important;            /* ensure it's last */
-    display: block !important;
-    max-width: 80px !important;       /* smaller width */
-    width: 80px !important;
-    height: auto !important;
-    margin: 20px auto 40px auto !important; /* below all content */
+  /* 7. Force Lottie & side animations to bottom, tiny */
+  .lottie-player,
+  .animation-box,
+  .processing-box {
     position: static !important;
-  }
-
-  /* Right‑side animations (processing, animation boxes) */
-  body .futuristic-container .processing-box,
-  body .futuristic-container .animation-box {
-    position: static !important;
-    margin: 20px auto 0 auto !important;
-    max-width: 90vw !important;
-    padding: 6px !important;
+    top: auto !important;
+    right: auto !important;
     transform: none !important;
+    display: block !important;
+    order: 999 !important;
+    width: 60px !important;
+    max-width: 60px !important;
+    height: auto !important;
+    margin: 30px auto 20px auto !important;
+    clear: both !important;
+    z-index: 1 !important;
   }
 }
+
