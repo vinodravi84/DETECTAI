@@ -7,29 +7,30 @@
   text-align: center;
   min-height: 100vh;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
-/* Drop area with glassmorphism */
+/* Glassmorphism drop area */
 .drop-area {
   width: 100%;
   max-width: 600px;
-  min-height: 280px;
+  min-height: 260px;
   background: var(--glass-bg);
   backdrop-filter: blur(12px);
-  border: 2px dashed var(--primary);
+  border: 2px dashed #00f0ff;
   border-radius: 20px;
   padding: clamp(30px, 5vw, 50px);
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 0 20px var(--neon-glow);
-  margin-top: 80px;
+  margin-top: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  position: relative;
 }
 
-/* Drop area hover */
 .drop-area:hover {
   background: rgba(255, 255, 255, 0.08);
   border-color: var(--primary-dark);
@@ -38,7 +39,6 @@
 
 /* Upload label */
 .fancy-upload-label span.glow-text {
-  display: block;
   font-size: clamp(1rem, 4vw, 1.4rem);
   font-weight: bold;
   color: var(--text-light);
@@ -66,8 +66,6 @@
 /* Image preview */
 .image-preview {
   width: 100%;
-  max-width: 100%;
-  height: auto;
   max-height: 300px;
   object-fit: contain;
   border-radius: 15px;
@@ -111,7 +109,7 @@
   flex-wrap: wrap;
 }
 
-/* Buttons */
+/* Buttons styling */
 .glow-button,
 .remove-button {
   background: var(--primary);
@@ -141,7 +139,7 @@
   transform: translateY(-2px);
 }
 
-/* Disabled buttons */
+/* Disabled button styling */
 .glow-button:disabled,
 .remove-button:disabled {
   opacity: 0.6;
@@ -150,7 +148,43 @@
   box-shadow: none;
 }
 
-/* Animated upload overlay */
+/* Glowing result text */
+.result-glow {
+  font-size: 1.3rem;
+  color: #00f0ff;
+  text-align: center;
+  animation: neonPulse 2s ease-in-out infinite;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+@keyframes neonPulse {
+  0%, 100% {
+    text-shadow: 0 0 5px #00f0ff, 0 0 10px #00f0ff, 0 0 20px #00f0ff;
+  }
+  50% {
+    text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 40px #00ffff;
+  }
+}
+
+/* Upload animation box (for GIF & text) */
+.upload-animation-box {
+  text-align: center;
+  margin-top: 30px;
+  background: transparent;
+  border: none;
+}
+
+.upload-here-glow {
+  font-size: clamp(1rem, 4vw, 1.4rem);
+  font-weight: bold;
+  color: #00f0ff;
+  text-shadow: 0 0 5px #00f0ff, 0 0 10px #00f0ff, 0 0 20px #00f0ff;
+  margin-top: 15px;
+  animation: neonPulse 2s ease-in-out infinite;
+}
+
+/* Overlay animation text inside drop */
 .upload-label-overlay {
   position: absolute;
   top: 0;
@@ -179,7 +213,7 @@
   }
 }
 
-/* Fade in effect */
+/* Fade in animation */
 .fade-in {
   animation: fadeInSmooth 0.8s ease-in-out forwards;
   opacity: 0;
@@ -196,94 +230,44 @@
   }
 }
 
-/* Neon glowing result text */
-.result-glow {
-  font-size: 1.3rem;
-  color: #00f0ff;
-  text-align: center;
-  animation: neonPulse 2s ease-in-out infinite;
-  margin-top: 15px;
-  font-weight: bold;
+/* Right-side animation box (desktop only) */
+.animation-box,
+.processing-box {
+  display: none; /* Hide on mobile by default */
 }
 
-@keyframes neonPulse {
-  0%, 100% {
-    text-shadow: 0 0 5px #00f0ff, 0 0 10px #00f0ff, 0 0 20px #00f0ff;
-  }
-  50% {
-    text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 40px #00ffff;
-  }
-}
-
-/* Upload animation box */
-.upload-animation-box {
-  text-align: center;
-  margin-top: 30px;
-  background: transparent;
-  border: none;
-}
-
-/* Upload here text */
-.upload-here-glow {
-  font-size: 1.4rem;
-  font-weight: bold;
-  color: #00f0ff;
-  text-shadow: 0 0 5px #00f0ff, 0 0 10px #00f0ff, 0 0 20px #00f0ff;
-  margin-top: 15px;
-  animation: neonPulse 2s ease-in-out infinite;
-}
-
-/* Lottie animation */
+/* Lottie player */
 .lottie-player {
   background-color: transparent !important;
   border: none !important;
   box-shadow: none !important;
+  max-width: 250px;
+  width: 100%;
+  margin: 20px auto 0 auto;
 }
 
-/* Animation Box Right */
-.animation-box,
-.processing-box {
-  position: fixed;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
-  padding: 20px;
-  max-width: 280px;
-  z-index: 9999;
-  text-align: center;
-  background: transparent;
-  border-radius: 1rem 0 0 1rem;
-  box-shadow: none;
-}
-
-.processing-box .glow-text {
-  margin-top: 10px;
-  color: #00ffff;
-  font-weight: bold;
-  font-size: 1.2rem;
-}
-
-/* Mobile responsiveness */
-@media (max-width: 768px) {
-  .drop-area,
-  .preview-card,
-  .image-preview-placeholder {
-    max-width: 100%;
-    height: auto;
-    padding: 20px;
-  }
-
-  .image-preview {
-    width: 100%;
-    height: auto;
-  }
-
+/* Media queries */
+@media (min-width: 768px) {
   .animation-box,
   .processing-box {
-    display: none;
+    display: block;
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    padding: 20px;
+    max-width: 280px;
+    z-index: 9999;
+    text-align: center;
+    background: transparent;
+    border-radius: 1rem 0 0 1rem;
+    box-shadow: none;
   }
 
-  .upload-here-glow {
-    font-size: 1.1rem;
+  .processing-box .glow-text {
+    margin-top: 10px;
+    color: #00ffff;
+    font-weight: bold;
+    font-size: 1.2rem;
   }
 }
