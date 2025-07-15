@@ -60,3 +60,34 @@ body {
   text-align: center;
   margin-top: 40px;
 }
+
+@media (max-width: 600px) {
+  .app-container {
+    padding: 20px 10px;
+  }
+
+  .app-header {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .app-name {
+    font-size: 1.8rem; /* Smaller title */
+    letter-spacing: 1px;
+  }
+
+  .main-container {
+    padding: 40px 10px;
+  }
+
+  .title {
+    font-size: 2rem; /* Reduce title size for mobile */
+    margin-bottom: 15px;
+  }
+
+  .placeholder {
+    font-size: 1rem;
+    margin-top: 20px;
+  }
+}
+
