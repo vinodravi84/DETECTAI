@@ -83,24 +83,25 @@
   }
 
   .typing-title {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     max-width: 90vw;
+    width: 90vw; /* ✅ Fix: force width so clip-path works */
     text-align: center;
     color: var(--text-light);
     text-shadow: var(--neon-glow);
-    white-space: normal;              /* Allow line wrap */
+    line-height: 1.6;
+    white-space: normal;
     overflow: hidden;
     display: inline-block;
-    line-height: 1.6;
-    animation: typingMobile 3.5s steps(60, end) forwards;
+    animation: typingMobile 3.5s steps(70, end) forwards;
   }
 
   @keyframes typingMobile {
     from {
-      clip-path: inset(0 100% 0 0);   /* Hide from right to left */
+      clip-path: inset(0 100% 0 0);
     }
     to {
-      clip-path: inset(0 0 0 0);      /* Reveal full text */
+      clip-path: inset(0 0 0 0);
     }
   }
 
