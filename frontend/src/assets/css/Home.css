@@ -69,39 +69,49 @@
   }
 
 @media (max-width: 600px) {
-  .typing-title {
+  .main-container {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding-top: 60px;
+    padding-left: 16px;
+    padding-right: 16px;
     text-align: center;
-    font-size: 1.4rem;
-    width: 100%;
-    white-space: normal;
+    box-sizing: border-box;
   }
 
-  .typing-line {
+  .typing-title {
+    font-size: 1.5rem;
+    text-align: center;
+    max-width: 90vw;
+    white-space: normal; /* Allow wrapping into 2 lines */
     overflow: hidden;
     display: inline-block;
-    border-right: none; /* no blinking */
-    white-space: nowrap;
-    width: 0;
+    border-right: none;  /* Remove blinking cursor */
+    animation: typingMobile 3.5s steps(70, end) forwards;
+    text-shadow: var(--neon-glow);
+    color: var(--text-light);
+    box-sizing: border-box;
   }
 
-  .line1 {
-    animation: typingLine1 2s steps(30, end) forwards;
+  .bot-wave {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
-  .line2 {
-    animation: typingLine2 2s steps(30, end) forwards;
-    animation-delay: 2.1s; /* Wait for line1 to complete */
+  .bot-gif {
+    max-width: 160px;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 0 12px rgba(139, 92, 246, 0.5);
+    animation: float 3s ease-in-out infinite;
   }
 
-  @keyframes typingLine1 {
-    from { width: 0; }
-    to { width: 100%; }
-  }
-
-  @keyframes typingLine2 {
+  @keyframes typingMobile {
     from { width: 0; }
     to { width: 100%; }
   }
