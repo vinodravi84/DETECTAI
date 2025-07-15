@@ -319,62 +319,67 @@
 }
 
 @media (max-width: 600px) {
-  /* Adjust container for smaller screens */
+  /* Container tweaks */
   .futuristic-container {
     flex-direction: column;
     align-items: center;
-    padding: 80px 16px 20px; /* More top space for navbar */
-    height: auto; /* Let it grow naturally */
+    padding: 70px 12px 20px; /* More top space for navbar */
+    height: auto;
   }
 
-  /* Drop area becomes smaller and moves upward */
+  /* Drop area smaller and higher */
   .drop-area {
-    max-width: 90%;
-    height: 220px;
-    padding: 30px 20px;
-    margin-top: 30px;
-    border-width: 1.5px;
-    border-radius: 12px;
-    box-shadow: 0 0 12px var(--neon-glow);
+    max-width: 95%;
+    height: 160px;
+    padding: 20px 16px;
+    margin-top: 10px; /* Push closer to navbar */
+    border-width: 1.2px;
+    border-radius: 10px;
+    box-shadow: 0 0 8px var(--neon-glow);
   }
 
-  /* Lottie animation shrinks and moves down */
+  .fancy-upload-label span.glow-text {
+    font-size: 1.1rem;
+  }
+
+  /* Lottie animation smaller and at bottom */
   .animation-box {
-    max-width: 150px;  /* Drastically reduce size */
-    padding: 10px;
-    bottom: 15px;
+    position: fixed;
+    bottom: 10px;
     top: auto;
     right: 50%;
     transform: translateX(50%);
+    max-width: 100px;
+    padding: 0;
+    z-index: 999;
   }
 
-  /* Lottie-specific styles (if using <lottie-player> directly) */
   .animation-box lottie-player {
-    width: 120px !important;
-    height: 120px !important;
+    width: 80px !important;
+    height: 80px !important;
   }
 
-  /* Reduce image preview size */
+  /* Image preview */
   .image-preview,
   .preview-card .image-preview-placeholder {
-    width: 90%;
-    height: 200px;
+    width: 100%;
+    height: 180px;
   }
 
-  /* Preview card spacing */
+  /* Preview card */
   .preview-card {
-    max-width: 90%;
-    padding: 20px;
+    max-width: 95%;
+    padding: 16px;
     height: auto;
-    margin-top: 30px;
+    margin-top: 20px;
   }
 
-  /* Button alignment inside card */
+  /* Buttons */
   .button-container {
     position: static;
     flex-direction: column;
     gap: 10px;
-    margin-top: 20px;
+    margin-top: 15px;
   }
 
   .glow-button,
@@ -383,20 +388,22 @@
     padding: 10px 0;
   }
 
-  /* Prediction box margin */
+  /* Prediction box */
   .prediction-box {
-    margin-top: 15px;
-    font-size: 0.95rem;
+    margin-top: 12px;
+    font-size: 0.9rem;
   }
 
-  /* Adjust loading box height */
+  /* Upload text under GIF */
+  .upload-here-glow {
+    font-size: 1rem;
+    margin-top: 5px;
+  }
+
+  /* Loading box */
   .loading-box {
     height: 200px;
   }
-
-  /* Resize upload text glow */
-  .upload-here-glow {
-    font-size: 1.1rem;
-  }
 }
+
 
