@@ -345,10 +345,9 @@
   /* Lottie animation smaller and at bottom */
   .animation-box {
     position: fixed;
-    bottom: 10px;
-    top: auto;
-    right: 50%;
-    transform: translateX(50%);
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
     max-width: 100px;
     padding: 0;
     z-index: 999;
