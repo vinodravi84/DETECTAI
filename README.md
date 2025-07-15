@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <a href="https://your-demo-link.com">▶️ Live Demo</a> • <a href="https://github.com/your-user/detectai">📂 GitHub Repo</a>
+  <a href="https://detectai-lilac.vercel.app/">▶️ Live Demo</a> • <a href="https://github.com/vinodravi84/DETECTAI">📂 GitHub Repo</a>
 </p>
 
 ---
