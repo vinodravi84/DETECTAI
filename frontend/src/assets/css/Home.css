@@ -69,36 +69,23 @@
   }
 
 @media (max-width: 600px) {
-  /* Container adjustments for small screens */
   .main-container {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     align-items: center;
+    justify-content: flex-start;
     min-height: 100vh;
     padding-top: 60px;
     padding-left: 16px;
     padding-right: 16px;
     text-align: center;
-    box-sizing: border-box;
   }
 
-  /* Typing effect text */
   .typing-title {
-    font-size: 1.8rem;
-    font-weight: bold;
-    overflow: hidden;
-    white-space: nowrap;
-    border-right: 2px solid var(--primary);
-    width: 100%;
-    max-width: 90vw;
-    animation: typing 3.5s steps(40, end) forwards, blink 0.8s step-end infinite;
-    text-shadow: var(--neon-glow);
-    color: var(--text-light);
-    box-sizing: border-box;
+    font-size: 1.4rem; /* Shrink for mobile */
+    max-width: 95vw;   /* Prevents overflow */
   }
 
-  /* Bot animation container spacing */
   .bot-wave {
     margin-top: 20px;
     display: flex;
@@ -106,7 +93,6 @@
     align-items: center;
   }
 
-  /* Bot animation image/GIF */
   .bot-gif {
     max-width: 160px;
     height: auto;
@@ -114,11 +100,5 @@
     box-shadow: 0 0 12px rgba(139, 92, 246, 0.5);
     animation: float 3s ease-in-out infinite;
   }
-
-  /* Ensure any extra content below doesn't overflow */
-  .additional-content {
-    padding: 10px;
-    text-align: center;
-    font-size: 0.95rem;
-  }
 }
+
