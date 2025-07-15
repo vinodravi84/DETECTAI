@@ -317,3 +317,86 @@
   border: none !important;
   box-shadow: none !important;
 }
+
+@media (max-width: 600px) {
+  /* Adjust container for smaller screens */
+  .futuristic-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 80px 16px 20px; /* More top space for navbar */
+    height: auto; /* Let it grow naturally */
+  }
+
+  /* Drop area becomes smaller and moves upward */
+  .drop-area {
+    max-width: 90%;
+    height: 220px;
+    padding: 30px 20px;
+    margin-top: 30px;
+    border-width: 1.5px;
+    border-radius: 12px;
+    box-shadow: 0 0 12px var(--neon-glow);
+  }
+
+  /* Lottie animation shrinks and moves down */
+  .animation-box {
+    max-width: 150px;  /* Drastically reduce size */
+    padding: 10px;
+    bottom: 15px;
+    top: auto;
+    right: 50%;
+    transform: translateX(50%);
+  }
+
+  /* Lottie-specific styles (if using <lottie-player> directly) */
+  .animation-box lottie-player {
+    width: 120px !important;
+    height: 120px !important;
+  }
+
+  /* Reduce image preview size */
+  .image-preview,
+  .preview-card .image-preview-placeholder {
+    width: 90%;
+    height: 200px;
+  }
+
+  /* Preview card spacing */
+  .preview-card {
+    max-width: 90%;
+    padding: 20px;
+    height: auto;
+    margin-top: 30px;
+  }
+
+  /* Button alignment inside card */
+  .button-container {
+    position: static;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .glow-button,
+  .remove-button {
+    width: 100%;
+    padding: 10px 0;
+  }
+
+  /* Prediction box margin */
+  .prediction-box {
+    margin-top: 15px;
+    font-size: 0.95rem;
+  }
+
+  /* Adjust loading box height */
+  .loading-box {
+    height: 200px;
+  }
+
+  /* Resize upload text glow */
+  .upload-here-glow {
+    font-size: 1.1rem;
+  }
+}
+
