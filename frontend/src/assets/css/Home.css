@@ -69,36 +69,40 @@
   }
 
 @media (max-width: 600px) {
-  .main-container {
+  .typing-title {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    min-height: 100vh;
-    padding-top: 60px;
-    padding-left: 16px;
-    padding-right: 16px;
     text-align: center;
+    font-size: 1.4rem;
+    width: 100%;
+    white-space: normal;
   }
 
-  .typing-title {
-    font-size: 1.4rem; /* Shrink for mobile */
-    max-width: 95vw;   /* Prevents overflow */
+  .typing-line {
+    overflow: hidden;
+    display: inline-block;
+    border-right: none; /* no blinking */
+    white-space: nowrap;
+    width: 0;
   }
 
-  .bot-wave {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .line1 {
+    animation: typingLine1 2s steps(30, end) forwards;
   }
 
-  .bot-gif {
-    max-width: 160px;
-    height: auto;
-    border-radius: 15px;
-    box-shadow: 0 0 12px rgba(139, 92, 246, 0.5);
-    animation: float 3s ease-in-out infinite;
+  .line2 {
+    animation: typingLine2 2s steps(30, end) forwards;
+    animation-delay: 2.1s; /* Wait for line1 to complete */
+  }
+
+  @keyframes typingLine1 {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+
+  @keyframes typingLine2 {
+    from { width: 0; }
+    to { width: 100%; }
   }
 }
-
