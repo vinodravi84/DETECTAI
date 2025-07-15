@@ -86,33 +86,45 @@
     font-size: 1.5rem;
     text-align: center;
     max-width: 90vw;
-    white-space: normal; /* Allow wrapping into 2 lines */
-    overflow: hidden;
-    display: inline-block;
-    border-right: none;  /* Remove blinking cursor */
-    animation: typingMobile 3.5s steps(70, end) forwards;
-    text-shadow: var(--neon-glow);
     color: var(--text-light);
-    box-sizing: border-box;
+    text-shadow: var(--neon-glow);
+    line-height: 1.6;
+    visibility: hidden; /* Hide actual text */
+    position: relative;
   }
 
-  .bot-wave {
-    margin-top: 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .typing-title::before,
+  .typing-title::after {
+    content: "";
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-shadow: var(--neon-glow);
+    animation-fill-mode: forwards;
+    color: var(--text-light);
+    font-size: 1.5rem;
+    font-weight: bold;
   }
 
-  .bot-gif {
-    max-width: 160px;
-    height: auto;
-    border-radius: 15px;
-    box-shadow: 0 0 12px rgba(139, 92, 246, 0.5);
-    animation: float 3s ease-in-out infinite;
+  .typing-title::before {
+    content: "Welcome to Image";
+    animation: typeLine1 2s steps(30, end);
   }
 
-  @keyframes typingMobile {
+  .typing-title::after {
+    content: "Recognition System";
+    animation: typeLine2 2s steps(30, end);
+    animation-delay: 2s;
+  }
+
+  @keyframes typeLine1 {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+
+  @keyframes typeLine2 {
     from { width: 0; }
     to { width: 100%; }
   }
 }
+
